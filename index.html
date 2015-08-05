@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Android-dialog-builder by devsoulwolf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Android-dialog-builder</h1>
+      <h2 class="project-tagline">android-dialog-builder</h2>
+      <a href="https://github.com/devsoulwolf/android-dialog-builder" class="btn">View on GitHub</a>
+      <a href="https://github.com/devsoulwolf/android-dialog-builder/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/devsoulwolf/android-dialog-builder/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="android-dialog-builder" class="anchor" href="#android-dialog-builder" aria-hidden="true"><span class="octicon octicon-link"></span></a>android-dialog-builder</h1>
+
+<p>This is an android in the Dialog library, not based on a systematic way to achieve Dialog using Activity root view of the Add Dialog, it has strong scalability and customizability!</p>
+
+<p>For more information please see <a href="http://devsoulwolf.github.io/android-dialog-builder">the website</a></p>
+
+<h2>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<h2>
+<a id="picturechooselib-with-java-code" class="anchor" href="#picturechooselib-with-java-code" aria-hidden="true"><span class="octicon octicon-link"></span></a>PictureChooseLib with Java code</h2>
+
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">void</span> onClick(<span class="pl-smi">View</span> v){
+        <span class="pl-k">if</span>(v<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>left){
+            <span class="pl-smi">DialogBuilder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DialogBuilder</span>(<span class="pl-v">this</span>)
+                    .setAnimation(<span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_in_left, <span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_out_left)
+                    <span class="pl-c">//.setIgnoreStatusBar(false)</span>
+                    .setLayoutParams(<span class="pl-c1">700</span>, <span class="pl-smi">ViewGroup</span><span class="pl-k">.</span><span class="pl-smi">LayoutParams</span><span class="pl-c1"><span class="pl-k">.</span>MATCH_PARENT</span>)
+                    .setGravity(<span class="pl-smi">Gravity</span><span class="pl-c1"><span class="pl-k">.</span>LEFT</span>)
+                    .setOnItemClickListener(<span class="pl-v">this</span>)
+                    .setBackgroundResource(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>toolbar_background);
+            <span class="pl-smi">ListMasterDialog</span> dialog <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ListMasterDialog</span>(builder);
+            dialog<span class="pl-k">.</span>setAdapter(<span class="pl-k">new</span> <span class="pl-smi">TextDialogAdapter</span>(<span class="pl-v">this</span>,getSimpleStringData(<span class="pl-c1">8</span>)));
+            dialog<span class="pl-k">.</span>show();
+        }<span class="pl-k">else</span> <span class="pl-k">if</span>(v<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>top){
+            <span class="pl-smi">DialogBuilder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DialogBuilder</span>(<span class="pl-v">this</span>)
+                    .setAnimation(<span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_in_top, <span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_out_top)
+                    <span class="pl-c">//.setIgnoreStatusBar(false)</span>
+                    .setGravity(<span class="pl-smi">Gravity</span><span class="pl-c1"><span class="pl-k">.</span>TOP</span>)
+                    .setOnItemClickListener(<span class="pl-v">this</span>)
+                    .setBackgroundResource(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>toolbar_background);
+            <span class="pl-smi">ListMasterDialog</span> dialog <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ListMasterDialog</span>(builder);
+            dialog<span class="pl-k">.</span>setCancelButton(<span class="pl-c1">false</span>);
+            dialog<span class="pl-k">.</span>setAdapter(<span class="pl-k">new</span> <span class="pl-smi">TextDialogAdapter</span>(<span class="pl-v">this</span>,getSimpleStringData(<span class="pl-c1">3</span>)));
+            dialog<span class="pl-k">.</span>show();
+        }<span class="pl-k">else</span> <span class="pl-k">if</span>(v<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>right){
+            <span class="pl-smi">DialogBuilder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DialogBuilder</span>(<span class="pl-v">this</span>)
+                    .setAnimation(<span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_in_right, <span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_out_right)
+                    <span class="pl-c">//.setIgnoreStatusBar(false)</span>
+                    .setLayoutParams(<span class="pl-c1">700</span>, <span class="pl-smi">ViewGroup</span><span class="pl-k">.</span><span class="pl-smi">LayoutParams</span><span class="pl-c1"><span class="pl-k">.</span>MATCH_PARENT</span>)
+                    .setGravity(<span class="pl-smi">Gravity</span><span class="pl-c1"><span class="pl-k">.</span>RIGHT</span>)
+                    .setOnItemClickListener(<span class="pl-v">this</span>)
+                    .setBackgroundResource(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>toolbar_background);
+            <span class="pl-smi">ListMasterDialog</span> dialog <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ListMasterDialog</span>(builder);
+            dialog<span class="pl-k">.</span>setAdapter(<span class="pl-k">new</span> <span class="pl-smi">TextDialogAdapter</span>(<span class="pl-v">this</span>,getSimpleStringData(<span class="pl-c1">8</span>)));
+            dialog<span class="pl-k">.</span>show();
+        }<span class="pl-k">else</span> <span class="pl-k">if</span>(v<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>bottom){
+            <span class="pl-smi">DialogBuilder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DialogBuilder</span>(<span class="pl-v">this</span>)
+                    .setAnimation(<span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_in_bottom, <span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_out_bottom)
+                    .setOnItemClickListener(<span class="pl-v">this</span>)
+                    <span class="pl-c">//.setIgnoreStatusBar(false)</span>
+                    .setGravity(<span class="pl-smi">Gravity</span><span class="pl-c1"><span class="pl-k">.</span>BOTTOM</span>);
+            <span class="pl-smi">ListMasterDialog</span> dialog <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">ListMasterDialog</span>(builder);
+            dialog<span class="pl-k">.</span>setAdapter(<span class="pl-k">new</span> <span class="pl-smi">TextDialogAdapter</span>(<span class="pl-v">this</span>,getSimpleStringData(<span class="pl-c1">4</span>)));
+            dialog<span class="pl-k">.</span>show();
+        }<span class="pl-k">else</span> <span class="pl-k">if</span>(v<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>center){
+            <span class="pl-smi">DialogBuilder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DialogBuilder</span>(<span class="pl-v">this</span>)
+                    .setOnItemClickListener(<span class="pl-v">this</span>)
+                    .setAnimation(<span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_fade_in_center, <span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_fade_out_center)
+                    <span class="pl-c">//.setIgnoreStatusBar(false)</span>
+                    .setGravity(<span class="pl-smi">Gravity</span><span class="pl-c1"><span class="pl-k">.</span>CENTER</span>);
+            <span class="pl-smi">AlertMasterDialog</span> dialog <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">AlertMasterDialog</span>(builder);
+            dialog<span class="pl-k">.</span>setTitle(<span class="pl-s"><span class="pl-pds">"</span>提示<span class="pl-pds">"</span></span>);
+            dialog<span class="pl-k">.</span>setContent(<span class="pl-s"><span class="pl-pds">"</span>校导网是一家专注于校园精英人才孵化的移动互联网公司，<span class="pl-cce">\n</span><span class="pl-pds">"</span></span> <span class="pl-k">+</span>
+                    <span class="pl-s"><span class="pl-pds">"</span>以帮助大学生成才为使命，打造了一个基于精品活动的校园交友及职业素养提升平台，<span class="pl-cce">\n</span><span class="pl-pds">"</span></span> <span class="pl-k">+</span>
+                    <span class="pl-s"><span class="pl-pds">"</span>通过各种比赛、拓展、培训、实习、演讲、沙龙等活动来帮助大学生走出迷茫，<span class="pl-cce">\n</span><span class="pl-pds">"</span></span> <span class="pl-k">+</span>
+                    <span class="pl-s"><span class="pl-pds">"</span>锻炼实践能力，拓展交际圈子，提升职业素养，实现成功就业与创业。<span class="pl-pds">"</span></span>);
+            dialog<span class="pl-k">.</span>show();
+        }<span class="pl-k">else</span> <span class="pl-k">if</span>(v<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>center1){
+            <span class="pl-smi">DialogBuilder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DialogBuilder</span>(<span class="pl-v">this</span>)
+                    .setAnimation(<span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_fade_in_center, <span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_fade_out_center)
+                    .setOnItemClickListener(<span class="pl-v">this</span>)
+                    <span class="pl-c">//.setIgnoreStatusBar(false)</span>
+                    .setGravity(<span class="pl-smi">Gravity</span><span class="pl-c1"><span class="pl-k">.</span>CENTER</span>);
+            <span class="pl-smi">AlertMasterDialog</span> dialog <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">AlertMasterDialog</span>(builder);
+            dialog<span class="pl-k">.</span>setTitle(<span class="pl-s"><span class="pl-pds">"</span>提示<span class="pl-pds">"</span></span>);
+            dialog<span class="pl-k">.</span>setButton2(<span class="pl-s"><span class="pl-pds">"</span>取消<span class="pl-pds">"</span></span>);
+            dialog<span class="pl-k">.</span>setContent(<span class="pl-s"><span class="pl-pds">"</span>校导网是一家专注于校园精英人才孵化的移动互联网公司，<span class="pl-cce">\n</span><span class="pl-pds">"</span></span> <span class="pl-k">+</span>
+                    <span class="pl-s"><span class="pl-pds">"</span>以帮助大学生成才为使命，打造了一个基于精品活动的校园交友及职业素养提升平台，<span class="pl-cce">\n</span><span class="pl-pds">"</span></span> <span class="pl-k">+</span>
+                    <span class="pl-s"><span class="pl-pds">"</span>通过各种比赛、拓展、培训、实习、演讲、沙龙等活动来帮助大学生走出迷茫，<span class="pl-cce">\n</span><span class="pl-pds">"</span></span> <span class="pl-k">+</span>
+                    <span class="pl-s"><span class="pl-pds">"</span>锻炼实践能力，拓展交际圈子，提升职业素养，实现成功就业与创业。<span class="pl-pds">"</span></span>);
+            dialog<span class="pl-k">.</span>show();
+        }<span class="pl-k">else</span> <span class="pl-k">if</span>(v<span class="pl-k">.</span>getId() <span class="pl-k">==</span> <span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>grid){
+            <span class="pl-smi">DialogBuilder</span> builder <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">DialogBuilder</span>(<span class="pl-v">this</span>)
+                    .setAnimation(<span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_in_bottom, <span class="pl-smi">R</span><span class="pl-k">.</span>anim<span class="pl-k">.</span>da_slide_out_bottom)
+                    .setOnItemClickListener(<span class="pl-v">this</span>)
+                    <span class="pl-c">//.setIgnoreStatusBar(false)</span>
+                    .setGravity(<span class="pl-smi">Gravity</span><span class="pl-c1"><span class="pl-k">.</span>BOTTOM</span>);
+            <span class="pl-smi">GridMasterDialog</span> dialog <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">GridMasterDialog</span>(builder);
+            dialog<span class="pl-k">.</span>setAdapter(<span class="pl-k">new</span> <span class="pl-smi">GridDialogAdapter</span>(<span class="pl-v">this</span>, getSimpleGridModelData()));
+            dialog<span class="pl-k">.</span>setNumColumns(<span class="pl-c1">4</span>);
+            dialog<span class="pl-k">.</span>show();
+        }
+    }
+
+    <span class="pl-k">private</span> <span class="pl-k">GridModel</span>[] getSimpleGridModelData(){
+        <span class="pl-k">return</span> <span class="pl-k">new</span> <span class="pl-smi">GridModel</span>[]{
+                <span class="pl-k">new</span> <span class="pl-smi">GridModel</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>share_layout_qq_icon,<span class="pl-s"><span class="pl-pds">"</span>QQ<span class="pl-pds">"</span></span>),
+                <span class="pl-k">new</span> <span class="pl-smi">GridModel</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>share_layout_wx_icon,<span class="pl-s"><span class="pl-pds">"</span>微信<span class="pl-pds">"</span></span>),
+                <span class="pl-k">new</span> <span class="pl-smi">GridModel</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>share_layout_friends_icon,<span class="pl-s"><span class="pl-pds">"</span>朋友圈<span class="pl-pds">"</span></span>),
+                <span class="pl-k">new</span> <span class="pl-smi">GridModel</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>share_layout_qq_icon,<span class="pl-s"><span class="pl-pds">"</span>QQ<span class="pl-pds">"</span></span>),
+                <span class="pl-k">new</span> <span class="pl-smi">GridModel</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>share_layout_wx_icon,<span class="pl-s"><span class="pl-pds">"</span>微信<span class="pl-pds">"</span></span>),
+                <span class="pl-k">new</span> <span class="pl-smi">GridModel</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>mipmap<span class="pl-k">.</span>share_layout_friends_icon,<span class="pl-s"><span class="pl-pds">"</span>朋友圈<span class="pl-pds">"</span></span>)
+        };
+    }
+
+    <span class="pl-k">private</span> <span class="pl-k">String</span>[] getSimpleStringData(<span class="pl-k">int</span> size){
+        <span class="pl-k">String</span>[] array <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">String</span>[size];
+        <span class="pl-k">for</span> (<span class="pl-k">int</span> i<span class="pl-k">=</span> <span class="pl-c1">0</span>;i<span class="pl-k">&lt;</span> size ;i<span class="pl-k">++</span>){
+            array[i] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>SIMPLE-DATA<span class="pl-pds">"</span></span> <span class="pl-k">+</span> i;
+        }
+        <span class="pl-k">return</span> array;
+    }
+
+    @<span class="pl-smi">Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> onItemClick(<span class="pl-smi">MasterDialog</span> dialog, <span class="pl-smi">View</span> view, <span class="pl-k">int</span> position) {
+        <span class="pl-smi">Toast</span><span class="pl-k">.</span>makeText(<span class="pl-v">this</span>,<span class="pl-s"><span class="pl-pds">"</span>Item click:<span class="pl-pds">"</span></span> <span class="pl-k">+</span> position,<span class="pl-smi">Toast</span><span class="pl-c1"><span class="pl-k">.</span>LENGTH_SHORT</span>)<span class="pl-k">.</span>show();
+    }</pre></div>
+
+<h2>
+<a id="maven" class="anchor" href="#maven" aria-hidden="true"><span class="octicon octicon-link"></span></a>Maven</h2>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;net.soulwolf.widget&lt;/groupId&gt;
+    &lt;url&gt;https://dl.bintray.com/soulwolf/maven&lt;/url&gt;
+    &lt;artifactId&gt;dialogBuilder&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<h2>
+<a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradle</h2>
+
+<pre><code>allprojects {
+   repositories {
+      jcenter()
+   }
+}
+
+compile 'net.soulwolf.widget:dialogBuilder:1.0.0'
+</code></pre>
+
+<h2>
+<a id="developed-by" class="anchor" href="#developed-by" aria-hidden="true"><span class="octicon octicon-link"></span></a>Developed by</h2>
+
+<p>Ching Soulwolf - <a href="mailto:Ching.Soulwolf@gmail.com">Ching.Soulwolf@gmail.com</a></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>Copyright 2015 Soulwolf Ching
+Copyright 2015 The Android Open Source Project for android-dialog-builder
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/devsoulwolf/android-dialog-builder">Android-dialog-builder</a> is maintained by <a href="https://github.com/devsoulwolf">devsoulwolf</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("android-dialog-builder");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
